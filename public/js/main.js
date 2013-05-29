@@ -1,6 +1,5 @@
 // 建立socket.io的连接
 var socket = io.connect('http://node.gfw.li');
-
 // 设置cookie
 function SetCookie(name,value){
   document.cookie = name + "="+ encodeURI(value);
@@ -31,12 +30,20 @@ function sendMsg() {
   socket.emit('new_msg', { themsg: data });
   $('#content').focus();
 }
+// 接收在线人数
+socket.on('userchange', function (data) {
+  console.log('在线数据包：');
+  console.log(data);
+  $('#usercount').html('当前在线：'+data.usercount);
+});
 
 // 测试下可否连接
 socket.emit('iconnect', { data: "I'm coming" });
-  socket.on('welcome', function (data) {
-    $('#msgs').html("<p>已连接上服务器...</p>");
+socket.on('welcome', function (data) {
+  $('#msgs').html("<p>已连接上服务器...</p>");
 });
+
+
 
 // 监听服务器传来的消息(或者说，绑定事件？)
 socket.on('msg_recv', function (data) {
