@@ -1,12 +1,8 @@
-require( './db' );
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
-    msg = require('./routes/msg'),
     path = require('path');
 
-var mongoose = require( 'mongoose' );
-var Msg      = mongoose.model( 'Msgs' );
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -31,26 +27,14 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get ( '/',             msg.list );
+app.get ( '/', function(req, res) {
+      return res.render('index');
+});
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-// 存储收到的信息
-var apicreate = function(msg, next) {
-  return new Msg({
-    name: msg.name,
-    content: msg.content,
-    send_time: msg.send_time,
-    created_time: Date()
-  }).save(function(err, todo, count) {
-    console.log("存好数据咯");
-    return Msg.find(function(err, Msgs) {
-      return next(err, Msgs);
-    });
-  });
-};
 
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
