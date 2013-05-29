@@ -28,7 +28,7 @@ app.configure('development', function(){
 });
 
 app.get ( '/', function(req, res) {
-      return res.render('index');
+  return res.render('index');
 });
 
 server.listen(app.get('port'), function(){
