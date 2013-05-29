@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
+    os = require('os'),
     path = require('path');
 
 
@@ -28,7 +29,9 @@ app.configure('development', function(){
 });
 
 app.get ( '/', function(req, res) {
-  return res.render('index');
+  return res.render('index', {
+    hostname : os.hostname()
+  });
 });
 
 server.listen(app.get('port'), function(){
