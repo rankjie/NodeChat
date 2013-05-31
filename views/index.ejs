@@ -6,25 +6,24 @@
   <meta name="viewport" content="width=device-width" />
   <title>NodeChat</title>
   <link rel="stylesheet" href="/stylesheets/foundation.css" />
+  <link rel="stylesheet" href="/stylesheets/custom.css" />
   <script src="/js/vendor/custom.modernizr.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/jquery.js"></script>
 </head>
 <body>
-  <div class="row">
-    <div class="large-12 columns">
+  <div class="row" style="height:100%">
+    <div class="large-12 columns" class="header">
       <h2>NodeChat-Demo @ <%= hostname %> | <a href="http://dev.hou.im">Huh?</a></h2>
       <h5 class="subheader" id="usercount"></h5>
       <h6 class="subheader" id="usernames"></h6>
       <hr />
     </div>
-    <div class="large-12 columns">
-      <div class="panel" id="msgs">
+    <div class="large-12 columns" class="msgs" style="height:40%;">
+      <div class="panel" id="msgs" style="height:100%;overflow:auto;">
         <p>正在连接服务器...</p>
       </div>
-    </div>
-    <div class="large-12 columns">
-      <input type="text" id="content" maxlength = '100' placeholder="说啥，按回车发送"/>
+      <input type="text" id="content"  placeholder="说啥，按回车发送"/>
     </div>
   </div>
   <script>

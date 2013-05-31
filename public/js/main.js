@@ -39,6 +39,7 @@ function sendMsg() {
   console.log(Date());
   $('#msgs').append("<p>我说："+data.content+'</p>');
   socket.emit('new_msg', { themsg: data });
+  $('#msgs')[0].scrollTop = $('#msgs')[0].scrollHeight;
   $('#content').focus();
 }
 
@@ -113,6 +114,7 @@ socket.on('msg_recv', function (data) {
   console.log("耗时:"+(t-d.send_time)/1000/1000);
   $('#content').animate({scrollTop: $(document).height()}, 300);
   $('#msgs').append("<p>"+d.name+"说："+d.content+'</p>');
+  $('#msgs')[0].scrollTop = $('#msgs')[0].scrollHeight;
 });
 
 // 从cookie里读取名字
