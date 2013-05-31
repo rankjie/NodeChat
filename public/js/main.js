@@ -1,5 +1,6 @@
+var url = location.href.slice(0,location.href.length-1);
 // 建立socket.io的连接
-var socket = io.connect('http://node.gfw.li');
+var socket = io.connect(url);
 
 // 设置cookie
 function SetCookie(name,value){
