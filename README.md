@@ -15,8 +15,7 @@ Tested with Node.js v0.11.1 and v0.9.7
 1. `git clone https://github.com/rankjie/NodeChat.git`
 2. `cd NodeChat`
 3. `npm install`
-4. Edit `public/js/main.js`, change the URL.
-5. `node app.js`  NodeChat is now running at port 3000
+4. `node app.js`  NodeChat is now running at port 3000
 
 ### TO DO
 
