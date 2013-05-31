@@ -50,6 +50,14 @@ var refresh_userlist = function (socket,data) {
   socket.broadcast.emit('userchange',{usercount:usercount,usernames:userlist});
 };
 
+// 强制socket.io工作模式
+// io.configure('development', function() {
+//     io.set('transports', [
+//             'websocket',
+//             'xhr-polling'
+//         ]);
+// });
+
 io.sockets.on('connection', function (socket) {
   // 接收到消息广播给其他客户端
   usercount++;
@@ -76,6 +84,3 @@ io.sockets.on('connection', function (socket) {
   });
 
 });
-
-
-
