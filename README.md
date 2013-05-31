@@ -1,7 +1,7 @@
 NodeChat
 ========
 
-A online chatroom powered by node.js &amp; socket.io &amp; express
+An online chatroom powered by node.js &amp; socket.io &amp; express
 
 Tested with Node.js v0.11.1 and v0.9.7
 
