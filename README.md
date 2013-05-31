@@ -17,3 +17,9 @@ Tested with Node.js v0.11.1 and v0.9.7
 3. `npm install`
 4. Edit `public/js/main.js`, change the URL.
 5. `node app.js`  NodeChat is now running at port 3000
+
+### TO DO
+
+- [ ] Make rooms
+
+- [x] Display online users' names

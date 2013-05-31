@@ -13,7 +13,7 @@
     settings : {
       animation: 'fadeAndPop',
       animationSpeed: 250,
-      closeOnBackgroundClick: true,
+      closeOnBackgroundClick: false,
       dismissModalClass: 'close-reveal-modal',
       bgClass: 'reveal-modal-bg',
       open: function(){},
