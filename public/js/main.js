@@ -64,9 +64,10 @@ if ($('#name').val().slice(-6)==="random") {
 socket.on('userchange', function (data) {
   console.log('在线数据包：');
   console.log(data);
-  $('#usercount').html('当前在线'+data.usercount+"人：");
   var v = [];
+  var c = 0;
   for(var k in data.usernames){
+    c++;
     if (data.usernames[k]===$('#name').val()) {
       v.push("<span class='label' data-tooltip class='has-tip' title='这是你，点一下改名' id='namelable' data-reveal-id='myModal' style='cursor: pointer;' data-options='disable-for-touch: true'>"+data.usernames[k]+"</span>");
     } else {
@@ -74,6 +75,7 @@ socket.on('userchange', function (data) {
     }
   }
   $('#usernames').html(v.join(" "));
+  $('#usercount').html('当前在线'+c+"人：");
 });
 
 // 测试下可否连接，同时提交姓名
