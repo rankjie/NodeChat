@@ -68,7 +68,7 @@ socket.on('userchange', function (data) {
   var v = [];
   for(var k in data.usernames){
     if (data.usernames[k]===$('#name').val()) {
-      v.push("<span class='label' data-tooltip class='has-tip' title='这是你，点一下改名' id='namelable' data-reveal-id='myModal' style='cursor: pointer;'> data-options='disable-for-touch: true'"+data.usernames[k]+"</span>");
+      v.push("<span class='label' data-tooltip class='has-tip' title='这是你，点一下改名' id='namelable' data-reveal-id='myModal' style='cursor: pointer;' data-options='disable-for-touch: true'>"+data.usernames[k]+"</span>");
     } else {
       v.push("<span class='secondary label' data-tooltip class='has-tip' title='点击去@他' data-options='disable-for-touch:true'>"+data.usernames[k]+"</span>");
     }
