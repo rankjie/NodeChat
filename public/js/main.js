@@ -86,7 +86,7 @@ socket.on('userchange', function (data) {
       }
     } else {
       if (ismobile()) {
-        v.push("<a class='secondary label someone' href='http://www.g.cn'>"+data.usernames[k]+"</a>");
+        v.push("<a class='secondary label someone' href='#'>"+data.usernames[k]+"</a>");
       } else {
         v.push("<a class='secondary label' class='someone' href='#' data-tooltip class='has-tip' title='点击去@他' data-options='disable-for-touch:true'>"+data.usernames[k]+"</a>");
       }
