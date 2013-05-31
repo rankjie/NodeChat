@@ -19,6 +19,15 @@ function GetCookie(cookieName){
   return decodeURI(cookieString.substring(start, end));
 }
 
+function ismobile() {
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
 // 发送消息
 function sendMsg() {
   var data = {};
@@ -46,7 +55,7 @@ $('#content').keypress(function(e){
   }
 });
 
-$('#namelable').click(function(e) {
+$('#namelable').click(function() {
   $('#myModal').foundation('reveal', 'open');
 });
 
@@ -69,9 +78,17 @@ socket.on('userchange', function (data) {
   for(var k in data.usernames){
     c++;
     if (data.usernames[k]===$('#name').val()) {
-      v.push("<span class='label' data-tooltip class='has-tip' title='这是你，点一下改名' id='namelable' data-reveal-id='myModal' style='cursor: pointer;' data-options='disable-for-touch: true'>"+data.usernames[k]+"</span>");
+      if (ismobile()) {
+        v.push("<a class='label' href='#' id='namelable' data-reveal-id='myModal'>"+data.usernames[k]+"</a>");
+      } else {
+        v.push("<a class='label someone' href='#' data-tooltip class='has-tip' title='这是你，点一下改名' id='namelable' data-reveal-id='myModal' style='cursor: pointer;' data-options='disable-for-touch: true'>"+data.usernames[k]+"</a>");
+      }
     } else {
-      v.push("<span class='secondary label' data-tooltip class='has-tip' title='点击去@他' data-options='disable-for-touch:true'>"+data.usernames[k]+"</span>");
+      if (ismobile()) {
+        v.push("<a class='secondary label someone' href='http://www.g.cn'>"+data.usernames[k]+"</a>");
+      } else {
+        v.push("<a class='secondary label' class='someone' href='#' data-tooltip class='has-tip' title='点击去@他' data-options='disable-for-touch:true'>"+data.usernames[k]+"</a>");
+      }
     }
   }
   $('#usernames').html(v.join(" "));
